@@ -341,7 +341,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 20,
                 'RuleId': resource_properties['WAFBlacklistRule'],
-                'Action': {'Type': 'BLOCK'},
+                'Action': {'Type': 'COUNT'},
                 'Type': 'REGULAR'
             }
         })
@@ -354,7 +354,7 @@ def create_stack(stack_name, resource_properties):
                 'ActivatedRule': {
                     'Priority': 30,
                     'RuleId': rbr_id,
-                    'Action': {'Type': 'BLOCK'},
+                    'Action': {'Type': 'COUNT'},
                     'Type': 'RATE_BASED'
                 }
             })
@@ -365,7 +365,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 40,
                 'RuleId': resource_properties['WAFScansProbesRule'],
-                'Action': {'Type': 'BLOCK'},
+                'Action': {'Type': 'COUNT'},
                 'Type': 'REGULAR'
             }
         })
@@ -376,7 +376,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 50,
                 'RuleId': resource_properties['WAFIPReputationListsRule1'],
-                'Action': {'Type': 'BLOCK'},
+                'Action': {'Type': 'COUNT'},
                 'Type': 'REGULAR'
             }
         })
@@ -387,7 +387,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 60,
                 'RuleId': resource_properties['WAFIPReputationListsRule2'],
-                'Action': {'Type': 'BLOCK'},
+                'Action': {'Type': 'COUNT'},
                 'Type': 'REGULAR'
             }
         })
@@ -398,7 +398,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 70,
                 'RuleId': resource_properties['WAFBadBotRule'],
-                'Action': {'Type': 'BLOCK'},
+                'Action': {'Type': 'COUNT'},
                 'Type': 'REGULAR'
             }
         })
@@ -409,7 +409,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 80,
                 'RuleId': resource_properties['WAFSqlInjectionRule'],
-                'Action': {'Type': 'BLOCK'},
+                'Action': {'Type': 'COUNT'},
                 'Type': 'REGULAR'
             }
         })
@@ -420,7 +420,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 90,
                 'RuleId': resource_properties['WAFXssRule'],
-                'Action': {'Type': 'BLOCK'},
+                'Action': {'Type': 'COUNT'},
                 'Type': 'REGULAR'
             }
         })
