@@ -1,0 +1,37 @@
+[
+  {
+    "ParameterKey": "SqlInjectionProtectionParam",
+    "ParameterValue": "no"
+  },
+  {
+    "ParameterKey": "CrossSiteScriptingProtectionParam",
+    "ParameterValue": "no"
+  },{
+    "ParameterKey": "ActivateHttpFloodProtectionParam",
+    "ParameterValue": "no"
+  },{
+    "ParameterKey": "ActivateScansProbesProtectionParam",
+    "ParameterValue": "no"
+  },{
+    "ParameterKey": "ActivateReputationListsProtectionParam",
+    "ParameterValue": "no"
+  },{
+    "ParameterKey": "ActivateBadBotProtectionParam",
+    "ParameterValue": "no"
+  },{
+    "ParameterKey": "AccessLogBucket",
+    "ParameterValue": "no"
+  },{
+    "ParameterKey": "SendAnonymousUsageData",
+    "ParameterValue": "no"
+  },{
+    "ParameterKey": "RequestThreshold",
+    "ParameterValue": "2000"
+  },{
+    "ParameterKey": "ErrorThreshold",
+    "ParameterValue": "50"
+  },{
+    "ParameterKey": "WAFBlockPeriod",
+    "ParameterValue": "240"
+  }
+  ]
