@@ -321,6 +321,17 @@ def create_stack(stack_name, resource_properties):
         print("[create_stack] Failed ALL attempts to call API")
 
     #--------------------------------------------------------------------------
+    # Determine default action type
+    # Right now this does not correctly handle switching between types - to do
+    # that one needs to do an update stack disabling the type and then another
+    # enabling with the new mode.
+    #--------------------------------------------------------------------------
+    if 'WAFTriggerAction' in resource_properties:
+      waf_trigger_action = resource_properties['WAFTriggerAction']
+    else:
+      waf_trigger_action = 'BLOCK'
+
+    #--------------------------------------------------------------------------
     # Update List
     #--------------------------------------------------------------------------
     updates = []
@@ -341,7 +352,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 20,
                 'RuleId': resource_properties['WAFBlacklistRule'],
-                'Action': {'Type': 'COUNT'},
+                'Action': {'Type': waf_trigger_action },
                 'Type': 'REGULAR'
             }
         })
@@ -354,7 +365,7 @@ def create_stack(stack_name, resource_properties):
                 'ActivatedRule': {
                     'Priority': 30,
                     'RuleId': rbr_id,
-                    'Action': {'Type': 'COUNT'},
+                    'Action': {'Type': waf_trigger_action },
                     'Type': 'RATE_BASED'
                 }
             })
@@ -365,7 +376,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 40,
                 'RuleId': resource_properties['WAFScansProbesRule'],
-                'Action': {'Type': 'COUNT'},
+                'Action': {'Type': waf_trigger_action },
                 'Type': 'REGULAR'
             }
         })
@@ -376,7 +387,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 50,
                 'RuleId': resource_properties['WAFIPReputationListsRule1'],
-                'Action': {'Type': 'COUNT'},
+                'Action': {'Type': waf_trigger_action },
                 'Type': 'REGULAR'
             }
         })
@@ -387,7 +398,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 60,
                 'RuleId': resource_properties['WAFIPReputationListsRule2'],
-                'Action': {'Type': 'COUNT'},
+                'Action': {'Type': waf_trigger_action },
                 'Type': 'REGULAR'
             }
         })
@@ -398,7 +409,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 70,
                 'RuleId': resource_properties['WAFBadBotRule'],
-                'Action': {'Type': 'COUNT'},
+                'Action': {'Type': waf_trigger_action },
                 'Type': 'REGULAR'
             }
         })
@@ -409,7 +420,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 80,
                 'RuleId': resource_properties['WAFSqlInjectionRule'],
-                'Action': {'Type': 'COUNT'},
+                'Action': {'Type': waf_trigger_action },
                 'Type': 'REGULAR'
             }
         })
@@ -420,7 +431,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 90,
                 'RuleId': resource_properties['WAFXssRule'],
-                'Action': {'Type': 'COUNT'},
+                'Action': {'Type': waf_trigger_action },
                 'Type': 'REGULAR'
             }
         })
