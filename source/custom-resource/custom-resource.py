@@ -331,6 +331,11 @@ def create_stack(stack_name, resource_properties):
     else:
       waf_trigger_action = 'BLOCK'
 
+    if 'WAFXssTriggerAction' in resource_properties:
+      waf_xss_trigger_action = resource_properties['WAFXssTriggerAction']
+    else:
+      waf_xss_trigger_action = waf_trigger_action
+
     #--------------------------------------------------------------------------
     # Update List
     #--------------------------------------------------------------------------
@@ -431,7 +436,7 @@ def create_stack(stack_name, resource_properties):
             'ActivatedRule': {
                 'Priority': 90,
                 'RuleId': resource_properties['WAFXssRule'],
-                'Action': {'Type': waf_trigger_action },
+                'Action': {'Type': waf_xss_trigger_action },
                 'Type': 'REGULAR'
             }
         })

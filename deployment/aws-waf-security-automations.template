@@ -112,6 +112,12 @@
       "AllowedValues": ["BLOCK", "COUNT"],
       "Description": "Action to take when a WAF Rule's condition triggers"
     },
+    "WAFXssTriggerAction": {
+      "Type": "String",
+      "Default": "COUNT",
+      "AllowedValues": ["BLOCK", "COUNT"],
+      "Description": "Action to take when a WAF Xss Rule's condition triggers"
+    },
     "SendAnonymousUsageData": {
       "Type": "String",
       "Default": "yes",
@@ -1466,6 +1472,9 @@
         },
         "WAFTriggerAction": {
           "Ref": "WAFTriggerAction"
+        },
+        "WAFXssTriggerAction": {
+          "Ref": "WAFXssTriggerAction"
         },
         "LambdaWAFReputationListsParserFunction": {
           "Fn::If": ["ReputationListsProtectionActivated", {
